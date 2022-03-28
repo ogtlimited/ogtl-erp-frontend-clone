@@ -8,6 +8,7 @@ const ROOTS_DASHBOARD = "/dashboard";
 export const PATH_AUTH = {
   root: ROOTS_AUTH,
   login: path(ROOTS_AUTH, "/login"),
+  signup: path(ROOTS_AUTH, "/signup"),
 };
 
 export const PATH_DASHBOARD = {

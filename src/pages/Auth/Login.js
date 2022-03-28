@@ -1,69 +1,42 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "../../services/api";
+import { Link } from "react-router-dom";
 import tokenService from "../../services/token.service";
-import { useMsal } from "@azure/msal-react";
-import { loginRequest } from "../../authConfig";
+
 import config from "../../config.json";
-import { useAppContext } from "../../Context/AppContext";
-import { callMsGraph } from "../../graph";
 
 const Login = () => {
-  const { instance, accounts } = useMsal();
-  const [graphData, setGraphData] = useState(null);
-  let navigate = useNavigate();
   const [errorMsg, seterrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: "onTouched",
+    criteriaMode: "firstError",
+    shouldFocusError: true,
+    shouldUnregister: false,
+    shouldUseNativeValidation: false,
+    delayError: undefined,
+  });
   const onSubmit = (data) => {
     setLoading(true);
-    instance
-      .loginPopup(loginRequest)
-      .then((e) => {
-        
-        console.log(e);
-        const obj = {
-          company_email: data.company_email.trim(),
-        };
 
-        // localStorage.setItem("microsoftAccount", JSON.stringify(e.account));
-        // localStorage.setItem(
-        //   "microsoftAccessToken",
-        //   JSON.stringify(e.accessToken)
-        // );
+    axios
+      .post(config.ApiUrl + "/api/login", data)
+      .then((res) => {
+        console.log(res.data);
+        tokenService.setUser(res.data.findUser);
 
-        axios
-          .post(config.ApiUrl + "/api/login", obj)
-          .then((res) => {
-            tokenService.setUser(res.data.employee);
-            // fetchEmployee()
-            // fetchEmployeeAttendance()
-            tokenService.setToken(res.data.token.token);
-            // setuserToken(res.data.token.token)
-            // navigate("/dashboard/employee-dashboard");
-            window.location.href = "/dashboard/employee-dashboard";
-          })
-          .catch((err) => {
-            console.log(err);
-            seterrorMsg(
-              "Unable to login either username or password is incorrect"
-            );
-            // setInterval(() => {
-            //     seterrorMsg('')
-            // }, 5000);
-          })
-          .finally(() => {
-            setLoading(false);
-          });
+        tokenService.setToken(res.data.token.token);
+
+        window.location.href = "/dashboard/employee-dashboard";
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((err) => {
+        console.log(err);
+        seterrorMsg("Unable to login either username or password is incorrect");
       })
       .finally(() => {
         setLoading(false);
@@ -73,15 +46,7 @@ const Login = () => {
     <div className="main-wrapper">
       <div className="account-content">
         <div className="container">
-          <div className="account-logo">
-            <Link to="/">
-              <img
-                className="logo"
-                src="/static/media/outsource.2499b5b3.png"
-                alt="Outsource Global Technologies"
-              />
-            </Link>
-          </div>
+          <div className="account-logo"></div>
           <div className="account-box">
             <div className="account-wrapper">
               <h3 className="account-title">Login</h3>
@@ -95,7 +60,7 @@ const Login = () => {
                 <div className="form-group">
                   <label htmlFor="company_email">Email </label>
                   <input
-                    type="text"
+                    type="email"
                     name="company_email"
                     id="company_email"
                     {...register("company_email", { required: true })}
@@ -106,15 +71,10 @@ const Login = () => {
                       <span className="error">Email is required</span>
                     )}
                 </div>
-                {/* <div className="form-group mt-2">
+                <div className="form-group mt-2">
                   <div className="row">
                     <div className="col">
                       <label htmlFor="password">Password</label>
-                    </div>
-                    <div className="col-auto">
-                      <a className="text-muted" href="/">
-                        Forgot password?
-                      </a>
                     </div>
                   </div>
                   <input
@@ -127,7 +87,7 @@ const Login = () => {
                   {errors.password && errors.password.type === "required" && (
                     <span className="error">Password is required</span>
                   )}
-                </div> */}
+                </div>
                 <div className="form-group text-center">
                   <button
                     className="btn btn-primary account-btn"
@@ -146,6 +106,10 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              <div className="form-group d-flex justify-content-between ">
+                <span className="text-muted">Don't have an account?</span>
+                <Link to="/auth/signup">Sign up</Link>
+              </div>
             </div>
           </div>
         </div>
