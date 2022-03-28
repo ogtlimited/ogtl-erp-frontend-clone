@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
-// import "./header.css";
 import logo from "../../assets/img/og-white-logo.png";
 import cropped from "../../assets/img/cropped-white.png";
-// import { AppContext } from "../context/AppContext";
 import { Link, useNavigate } from "react-router-dom";
 import tokenService from "../../services/token.service";
 import { NotificationBox } from "./NotificationBox";
-import { useMsal } from "@azure/msal-react";
 
 const toggle_sidebar = (e) => {
   e.preventDefault();
@@ -21,18 +18,11 @@ const toggle_sidebar = (e) => {
 
 const Header = () => {
   let navigate = useNavigate();
-  const { instance } = useMsal();
+
   const logout = (e) => {
     e.preventDefault();
     tokenService.clearStorage();
-    instance
-      .logoutPopup()
-      .then((e) => {
-        navigate("/auth");
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    navigate("/auth/login");
   };
   const user = tokenService.getUser();
 
