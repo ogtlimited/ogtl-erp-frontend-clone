@@ -259,7 +259,7 @@ const EmployeeUser = () => {
                 </div>
               </div>
             </section>
-            <section>
+            {/* <section>
               <h5 className="dash-title">Job Openings</h5>
               <div className="card">
                 <div className="card-body">
@@ -281,7 +281,7 @@ const EmployeeUser = () => {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> */}
             <section>
               <h5 className="dash-title">Quote of the day</h5>
 

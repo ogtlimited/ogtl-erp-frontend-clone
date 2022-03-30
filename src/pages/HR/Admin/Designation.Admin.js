@@ -78,7 +78,7 @@ const Designations = () => {
     fetchDesignation();
 
     if (submitted) {
-      if (mode == "add") {
+      if (mode === "add") {
         axiosInstance
           .post("/designation", formValue)
           .then((e) => {
@@ -87,15 +87,13 @@ const Designations = () => {
               "Designation successfully created",
               "alert alert-success"
             );
-            // setformValue(null);
+
             fetchDesignation();
           })
           .catch((err) => {
-            // setformValue(null);
-            console.log(err);
+            showAlert(true, err?.response?.data?.message, "alert alert-danger");
           });
       } else {
-        // formValue._id = formUpdate._id;
         axiosInstance
           .put("/designation/" + formUpdate._id, formValue)
           .then((e) => {
@@ -109,7 +107,8 @@ const Designations = () => {
           })
           .catch((err) => {
             setformValue(null);
-            console.log(err);
+
+            showAlert(true, err?.response?.data?.message, "alert alert-danger");
           });
       }
     }

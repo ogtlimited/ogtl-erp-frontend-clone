@@ -134,6 +134,7 @@ const AppProvider = (props) => {
   const adminDashboardData = () => {
     return axiosInstance.get("/admin-dashboard");
   };
+
   const fetchEmployeeAttendance = () => {
     const date = new Date();
     const firstDay = new Date(

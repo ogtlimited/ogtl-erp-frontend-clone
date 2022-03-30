@@ -8,6 +8,7 @@ import GuestGuard from "../guards/GuestGuard";
 import AdminLayout from "../layouts/Admin";
 import RecruitmentLayout from "../layouts/RecruitmentLayout";
 import Login from "../pages/Auth/Login";
+import SignUp from "../pages/Auth/SignUp";
 import NotFound from "../pages/Error/NotFound";
 import Unauthorized from "../pages/Error/unauthorized";
 const Loadable = (Component) => (props) => {
@@ -37,6 +38,14 @@ export default function Router() {
           element: (
             <GuestGuard>
               <Login />
+            </GuestGuard>
+          ),
+        },
+        {
+          path: "signup",
+          element: (
+            <GuestGuard>
+              <SignUp />
             </GuestGuard>
           ),
         },

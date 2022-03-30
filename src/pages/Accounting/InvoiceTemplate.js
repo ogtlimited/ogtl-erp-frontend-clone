@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import logo from "../../assets/img/outsource.png";
+import logo from "../../assets/img/img.png";
 import axiosInstance from "../../services/api";
 import { formatter } from "../../services/numberFormatter";
 
@@ -53,7 +53,7 @@ const InvoiceTemplate = () => {
                 <div className="col-sm-6 m-b-20">
                   <img src={logo} className="inv-logo" alt="" />
                   <ul className="list-unstyled">
-                    <li>Outsource Global Technologies</li>
+                    <li>Bluetag Group</li>
                     <li>2nd Floor, ASTA GALLERY Plot 1185,Parkway Road</li>
                     <li>Cadastral Zone Mabushi District, Abuja</li>
                     <li>GST No:</li>

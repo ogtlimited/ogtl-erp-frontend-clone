@@ -55,7 +55,7 @@ const Bill = () => {
                 <div className="col-sm-6 m-b-20">
                   <img src={logo} className="inv-logo" alt="" />
                   <ul className="list-unstyled">
-                    <li>Outsource Global Technologies</li>
+                    <li>Bluetag Group</li>
                     <li>2nd Floor, ASTA GALLERY Plot 1185,Parkway Road</li>
                     <li>Cadastral Zone Mabushi District, Abuja</li>
                     <li>GST No:</li>

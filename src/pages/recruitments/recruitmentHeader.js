@@ -6,11 +6,11 @@ const RecruitmentHeader = () => {
     <div className="header">
       <div className="header-left">
         <a className="logo">
-          <img src={logo} style={{width: '80px'}} alt="" />
+          <img src={logo} style={{ width: "80px" }} alt="" />
         </a>
       </div>
       <div className="page-title-box float-left">
-        <h3>Outsource Global Technologies</h3>
+        <h3>Bluetag Group</h3>
       </div>
       <ul className="nav user-menu">
         <li className="nav-item">
