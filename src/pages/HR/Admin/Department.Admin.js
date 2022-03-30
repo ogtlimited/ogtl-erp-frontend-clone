@@ -93,6 +93,7 @@ const Departments = () => {
           })
           .catch((err) => {
             // setformValue(null);
+            showAlert(true, err?.response?.data?.message, "alert alert-danger");
             setsubmitted(false);
             console.log(err);
           });
@@ -110,6 +111,7 @@ const Departments = () => {
             fetchDept();
           })
           .catch((err) => {
+            showAlert(true, err?.response?.data?.message, "alert alert-danger");
             setformValue(null);
             setsubmitted(false);
             console.log(err);

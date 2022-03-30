@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import logo from "../../assets/img/og-white-logo.png";
+import logo from "../../assets/img/logo.png";
 import cropped from "../../assets/img/cropped-white.png";
 import { Link, useNavigate } from "react-router-dom";
 import tokenService from "../../services/token.service";
@@ -35,9 +35,7 @@ const Header = () => {
         <div className="logo">
           <img src={logo} style={{ width: "100px" }} alt="" />
         </div>
-        <div className="cropped-logo">
-          <img src={cropped} alt="" />
-        </div>
+        <div className="cropped-logo">{/* <img src={cropped} alt="" /> */}</div>
       </div>
 
       <a id="toggle_btn">
@@ -49,7 +47,7 @@ const Header = () => {
       </a>
 
       <div className="page-title-box">
-        <h3>Outsource Global Technologies</h3>
+        <h3>Bluetag Group</h3>
       </div>
 
       <a id="mobile_btn" className="mobile_btn ml-4" href="#sidebar">

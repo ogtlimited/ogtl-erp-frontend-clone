@@ -69,7 +69,7 @@ const ShiftAdmin = () => {
   };
   useEffect(() => {
     if (submitted) {
-      if (mode == "add") {
+      if (mode === "add") {
         axiosInstance
           .post("/api/shiftType", formValue)
           .then((res) => {
@@ -89,7 +89,7 @@ const ShiftAdmin = () => {
           });
       } else {
         axiosInstance
-          .patch("/api/shiftType/" + editData._id, formValue)
+          .patch("/api/shiftType/" + editData?._id, formValue)
           .then((res) => {
             setFormValue(null);
             fetchTypesShift();
@@ -106,8 +106,10 @@ const ShiftAdmin = () => {
           });
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formValue]);
+    return () => {
+      showAlert(false);
+    };
+  }, [formValue, mode]);
 
   useEffect(() => {
     seteditData(clickedRow);
