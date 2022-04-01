@@ -54,6 +54,7 @@ const AllEmployeesAdmin = () => {
         acceptedJobOffers,
         employees,
       } = res.data.createEmployeeForm;
+
       const empHelper = new EmployeeHelperService(
         shifts,
         designations,
@@ -125,24 +126,26 @@ const AllEmployeesAdmin = () => {
   useEffect(() => {
     if (submitted) {
       formValue.image = "";
-      const fullName = formValue.applicant?.split("-");
       if (mode === "add") {
-        formValue["first_name"] = fullName[0];
-        formValue["last_name"] = fullName[1];
-        formValue["middle_name"] = fullName[2];
-        delete formValue.applicant;
-      }
-
-      if (mode === "add") {
-        axiosInstance.post("/employees", formValue).then((res) => {
-          fetchEmployee();
-          setsubmitted(false);
-          showAlert(
-            true,
-            "New Employee created successfully",
-            "alert alert-success"
-          );
-        });
+        axiosInstance
+          .post("/employees", formValue)
+          .then((res) => {
+            fetchEmployee();
+            setsubmitted(false);
+            showAlert(
+              true,
+              "New Employee created successfully",
+              "alert alert-success"
+            );
+          })
+          .catch((error) => {
+            console.log(error);
+            showAlert(
+              true,
+              error?.response?.data?.message,
+              "alert alert-danger"
+            );
+          });
       } else {
         let id = editData._id;
 
@@ -150,17 +153,26 @@ const AllEmployeesAdmin = () => {
         for (let i in template) {
           values[i] = formValue[i];
         }
-        axiosInstance.put("/employees/" + id, values).then((res) => {
-          fetchEmployee();
-          setsubmitted(false);
-          seteditData({});
+        axiosInstance
+          .put("/employees/" + id, values)
+          .then((res) => {
+            fetchEmployee();
+            setsubmitted(false);
+            seteditData({});
 
-          showAlert(
-            true,
-            "Employee Details successfully updated",
-            "alert alert-success"
-          );
-        });
+            showAlert(
+              true,
+              "Employee Details successfully updated",
+              "alert alert-success"
+            );
+          })
+          .catch((error) => {
+            showAlert(
+              true,
+              error?.response?.data?.message,
+              "alert alert-danger"
+            );
+          });
       }
     }
   }, [submitted, formValue]);
