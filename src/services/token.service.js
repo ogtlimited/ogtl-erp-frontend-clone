@@ -6,7 +6,9 @@ class TokenService {
   }
 
   getUser() {
-    return JSON.parse(localStorage.getItem("user"));
+    if (localStorage.getItem("user")) {
+      return JSON.parse(localStorage.getItem("user"));
+    }
   }
   getOgid() {
     return this.getUser().ogid;
