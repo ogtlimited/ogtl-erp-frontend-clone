@@ -11,8 +11,6 @@
 # production
 /build
 
-# config base urls
-/src/config.json
 
 # misc
 .DS_Store
