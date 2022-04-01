@@ -27,7 +27,6 @@ const Login = () => {
     axios
       .post(config.ApiUrl + "/api/login", data)
       .then((res) => {
-        console.log(res.data);
         tokenService.setUser(res.data.findUser);
 
         tokenService.setToken(res.data.token.token);

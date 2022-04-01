@@ -1,29 +1,55 @@
 export const employeeFormJson = {
   title: "Employee Form",
   Fields: [
-    // {
-    //   name: "applicant",
-    //   type: "select",
-    //   title: "Applicant",
-    //   required: {
-    //     value: true,
-    //     message: "applicant is required",
-    //   },
-    //   options: [],
-    // },
-    // {
-    //   name: "password",
-    //   type: "text",
-    //   disabled: true,
-    //   title: "Password",
-    //   required: {
-    //     value: true,
-    //     message: "Password is required",
-    //   },
-    //   validation: function (val) {
-    //     return val.length >= 5 || "Min Length is 5";
-    //   },
-    // },
+    {
+      name: "first_name",
+      type: "text",
+      title: "First Name",
+      required: {
+        value: true,
+        message: "First Name is required",
+      },
+    },
+    {
+      name: "middle_name",
+      type: "text",
+      title: "Middle Name",
+      required: {
+        value: true,
+        message: "Middle Name is required",
+      },
+    },
+    {
+      name: "last_name",
+      type: "text",
+      title: "Last Name",
+      required: {
+        value: true,
+        message: "Last Name is required",
+      },
+    },
+    {
+      name: "ogid",
+      type: "text",
+      title: "Employee ID",
+      required: {
+        value: true,
+        message: "Employeed ID is required",
+      },
+    },
+    {
+      name: "password",
+      type: "text",
+
+      title: "Password",
+      required: {
+        value: true,
+        message: "Password is required",
+      },
+      validation: function (val) {
+        return val.length >= 5 || "Min Length is 5";
+      },
+    },
     {
       name: "company_email",
       type: "email",
@@ -101,25 +127,7 @@ export const employeeFormJson = {
       title: "Branch",
       options: [],
     },
-    
-    {
-      name: "isAdmin",
-      type: "check",
-      title: "Admin User",
-      required: {
-        value: true,
-        message: "Admin User is required",
-      },
-    },
-    {
-      name: "isExpatriate",
-      type: "check",
-      title: "Expatriate",
-      required: {
-        value: true,
-        message: "Admin User is required",
-      },
-    },
+
     {
       name: "employeeType",
       type: "select",
@@ -205,7 +213,7 @@ export const employeeFormJson = {
       ],
     },
     {
-       name: "leaveCount",
+      name: "leaveCount",
       type: "number",
       title: "Leave Count",
       required: {
@@ -221,32 +229,29 @@ export const employeeFormJson = {
       type: "file",
       title: "Employee Image",
     },
+    {
+      name: "isAdmin",
+      type: "check",
+      title: "Admin User",
+      required: {
+        value: true,
+        message: "Admin User is required",
+      },
+    },
+    {
+      name: "isExpatriate",
+      type: "check",
+      title: "Expatriate",
+      required: {
+        value: true,
+        message: "Admin User is required",
+      },
+    },
     // {
-    //     name:'role' ,
-    //     type:'role',
-    //     title:'Role',
-    //     roleList: [
-    //         {
-    //           name: "HR",
-    //           abbrev: "HR",
-    //           nestedArray: [{ name: "HR_read"}, {name: "HR_write"},  {name: "HR_update"}, {name: "HR_delete" }]
-    //         },
-    //         {
-    //           name: "Accounting",
-    //           abbrev: "ACC",
-    //           nestedArray: [{ name: "ACC_read"}, {name: "ACC_write"},  {name: "ACC_update"}, {name: "ACC_delete" }]
-    //         },
-    //         {
-    //           name: "Facility",
-    //           abbrev: "FAC",
-    //           nestedArray: [{ name: "FAC_read"}, {name: "FAC_write"},  {name: "FAC_update"}, {name: "FAC_delete" }]
-    //         },
-    //         {
-    //           name: "IT",
-    //           abbrev: "IT",
-    //           nestedArray: [{ name: "IT_read"}, {name: "IT_write"},  {name: "IT_update"}, {name: "IT_delete" }]
-    //         }
-    //       ]
+    //   name: "role",
+    //   type: "role",
+    //   title: "Role",
+    //   options: [],
     // },
   ],
 };

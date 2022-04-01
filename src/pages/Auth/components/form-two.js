@@ -91,14 +91,14 @@ const FormTwo = ({ previous, formData }) => {
     axios
       .post(config.ApiUrl + "/api/signup", newData)
       .then((res) => {
-        tokenService.setUser(res.data.createEmployeeData);
+        tokenService.setUser(res.data.findUser);
 
         tokenService.setToken(res.data.token.token);
         window.location.href = "/dashboard/employee-dashboard";
       })
       .catch((err) => {
         console.log(err);
-        seterrorMsg("Unable to login either username or password is incorrect");
+        seterrorMsg(err?.response?.data?.message);
       })
       .finally(() => {
         setLoading(false);

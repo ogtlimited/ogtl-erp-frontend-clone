@@ -143,7 +143,10 @@ export default class EmployeeHelperService {
       } else if (field.name === "reports_to") {
         field.options = service.reportstoOpts;
         return field;
+      } else if (field.name === "branch") {
+        field.options = service.branchOpts;
       }
+
       return field;
     });
   }
