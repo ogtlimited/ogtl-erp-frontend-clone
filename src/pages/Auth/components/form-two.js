@@ -149,20 +149,6 @@ const FormTwo = ({ previous, formData }) => {
                     )}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="default_shift">shift </label>
-                  <Controller
-                    name="default_shift"
-                    control={control}
-                    render={({ field }) => (
-                      <Select {...field} options={shifts} />
-                    )}
-                  />
-                  {errors.default_shift &&
-                    errors.default_shift.type === "required" && (
-                      <span className="error">Shift is required</span>
-                    )}
-                </div>
-                <div className="form-group">
                   <label htmlFor="role">Role </label>
                   <Controller
                     name="role"
@@ -174,6 +160,28 @@ const FormTwo = ({ previous, formData }) => {
                   {errors.role && errors.role.type === "required" && (
                     <span className="error">Role is required</span>
                   )}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="default_shift">shift </label>
+                  <Controller
+                    name="default_shift"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        {...field}
+                        options={shifts}
+                        menuPortalTarget={document.body}
+                        styles={{
+                          menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+                        }}
+                      />
+                    )}
+                  />
+                  {errors.default_shift &&
+                    errors.default_shift.type === "required" && (
+                      <span className="error">Shift is required</span>
+                    )}
                 </div>
 
                 <div className="form-group mt-2">
