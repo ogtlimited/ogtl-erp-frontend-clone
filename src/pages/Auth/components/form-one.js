@@ -61,7 +61,7 @@ const FormOne = ({ next, setFormData, formData }) => {
                     name="middle_name"
                     id="middle_name"
                     defaultValue={formData?.middle_name || ""}
-                    {...register("middle_name", { required: true })}
+                    {...register("middle_name")}
                     className="form-control"
                   />
                   {errors.middle_name &&

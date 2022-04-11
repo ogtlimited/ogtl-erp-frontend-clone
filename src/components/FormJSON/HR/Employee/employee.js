@@ -191,25 +191,33 @@ export const employeeFormJson = {
           value: "active",
         },
         {
-          name: "projectId",
-          type: "select",
-          title: "Campaign",
-          required: {
-            value: true,
-            message: "Campaign is required",
-          },
-          options: [],
+          label: "Terminated",
+          value: "terminated",
         },
         {
-          name: "default_shift",
-          type: "select",
-          title: "Shift",
-          required: {
-            value: true,
-            message: "shift is required",
-          },
-          options: [],
+          label: "Left",
+          value: "left",
         },
+        // {
+        //   name: "projectId",
+        //   type: "select",
+        //   title: "Campaign",
+        //   required: {
+        //     value: true,
+        //     message: "Campaign is required",
+        //   },
+        //   options: [],
+        // },
+        // {
+        //   name: "default_shift",
+        //   type: "select",
+        //   title: "Shift",
+        //   required: {
+        //     value: true,
+        //     message: "shift is required",
+        //   },
+        //   options: [],
+        // },
       ],
     },
     {
@@ -242,10 +250,11 @@ export const employeeFormJson = {
       name: "isExpatriate",
       type: "check",
       title: "Expatriate",
-      required: {
-        value: true,
-        message: "Admin User is required",
-      },
+    },
+    {
+      name: "isEmployee",
+      type: "check",
+      title: "Employee",
     },
     // {
     //   name: "role",

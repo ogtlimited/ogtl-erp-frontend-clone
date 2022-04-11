@@ -40,6 +40,7 @@ export const PATH_DASHBOARD = {
     shifts: path(ROOTS_DASHBOARD, "/hr/shifts"),
     shiftAssignment: path(ROOTS_DASHBOARD, "/hr/shift-assignment"),
     shiftRequest: path(ROOTS_DASHBOARD, "/hr/shift-request"),
+    branch: path(ROOTS_DASHBOARD, "/hr/branch"),
   },
   payroll: {
     root: path(ROOTS_DASHBOARD, "/payroll"),

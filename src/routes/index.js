@@ -246,6 +246,14 @@ export default function Router() {
               ),
             },
             { path: "shift-request", element: <ShiftRequest /> },
+            {
+              path: "branch",
+              element: (
+                <GuardedRoute title="" dept="HR">
+                  <Branch />
+                </GuardedRoute>
+              ),
+            },
           ],
         },
         {

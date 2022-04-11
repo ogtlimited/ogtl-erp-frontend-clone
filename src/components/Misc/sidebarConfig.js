@@ -141,6 +141,11 @@ const sidebarConfig = [
             title: "Shift Request",
             path: PATH_DASHBOARD.hr.shiftRequest,
           },
+          {
+            canView: "HR",
+            title: "Branch",
+            path: PATH_DASHBOARD.hr.branch,
+          },
         ],
       },
       {

@@ -111,9 +111,9 @@ const AllEmployeesAdmin = () => {
   const create = () => {
     let initialValues = {};
     for (let i in template) {
-      if (i == "isAdmin") {
+      if (i === "isAdmin" || i === "isExpatriate" || i === "isEmployee") {
         initialValues[i] = false;
-      } else if (i == "date_of_joining") {
+      } else if (i === "date_of_joining") {
         initialValues[i] = new Date().toISOString().slice(0, 10);
       } else {
         initialValues[i] = "";
