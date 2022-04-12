@@ -115,6 +115,8 @@ const AllEmployeesAdmin = () => {
         initialValues[i] = false;
       } else if (i === "date_of_joining") {
         initialValues[i] = new Date().toISOString().slice(0, 10);
+      } else if (i === "projectId") {
+        initialValues[i] = null;
       } else {
         initialValues[i] = "";
       }
